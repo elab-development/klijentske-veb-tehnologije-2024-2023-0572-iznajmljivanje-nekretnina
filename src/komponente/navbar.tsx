@@ -7,7 +7,7 @@ export default function NavBar() {
 
         {}
         <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
-          <img src="/logo.svg" alt="KrovNadGlavom" height={28} />
+          <img src="slike/logo.svg" alt="KrovNadGlavom" height={28} />
         </Link>
 
         <button

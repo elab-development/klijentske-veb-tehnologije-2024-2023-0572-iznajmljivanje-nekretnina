@@ -5,9 +5,54 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff9e9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ===== HERO ===== */
+.hero-landing {
+  position: relative;
+  min-height: 92vh; /* skoro pun ekran kao na maketi */
+  display: flex;
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15)),
+    url("slike/hero.jpg"); /* zameni svojom slikom; stavi je u public/hero.jpg */
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-landing .hero-inner {
+  text-align: center;
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.hero-title {
+  color: #0B3A82;                /* plava sa mockupa */
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.hero-subtitle {
+  color: #5f6c7b;                /* blag sivi ton */
+}
+
+.btn-hero {
+  background-color: #ff9f1c;     /* narandžasta sa mockupa */
+  border-color: #ff9f1c;
+  color: #1b1b1b;
+  font-weight: 600;
+  padding: .7rem 1.5rem;
+  border-radius: .75rem;
+}
+.btn-hero:hover, .btn-hero:focus {
+  background-color: #f08f0c;
+  border-color: #f08f0c;
+  color: #111;
+}
+
