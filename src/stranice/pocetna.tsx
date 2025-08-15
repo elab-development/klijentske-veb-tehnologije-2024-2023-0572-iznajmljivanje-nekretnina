@@ -3,46 +3,127 @@ import { Link, useNavigate } from "react-router-dom";
 import { PropertyService } from "../servisi/NekretnineServis";
 import { IProperty } from "../modeli/INekretnina";
 import PropertyCard from "../komponente/poljenekretnine";
+import Nav from "../komponente/navbar";
+
 
 export default function HomePage() {
-  const [properties, setProperties] = useState<IProperty[]>([]);
+  const [featured, setFeatured] = useState<IProperty[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setProperties(PropertyService.demo());
+    // uzmi tačno 3 istaknute
+    setFeatured(PropertyService.featured());
   }, []);
+
+  const onContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    alert(
+      `Poslato (demo):\nIme: ${fd.get("name")}\nEmail: ${fd.get("email")}\nPoruka: ${fd.get("message")}`
+    );
+    e.currentTarget.reset();
+  };
 
   return (
     <>
-      {/* HERO 1:1 logika iz makete */}
+      {/* HERO */}
       <section className="hero-landing">
         <div className="container hero-inner">
-          <h1 className="display-4 display-md-3 hero-title mb-3">
+          <h1 className="display-4 hero-title mb-3">
             Pronađite svoj savršen dom — brzo, lako i pouzdano
           </h1>
           <p className="lead hero-subtitle mb-4">
             Pregledajte, rezervišite ili iznajmite nekretninu iz udobnosti svog doma.
           </p>
-          <button className="btn btn-hero"
-                  onClick={() => navigate("/nekretnine")}>
+          <button className="btn btn-hero" onClick={() => navigate("/nekretnine")}>
             Pogledajte ponudu
           </button>
         </div>
       </section>
 
-      {/* ISTAKNUTE NEKRETNINE ispod hero-a (ostaje kao pre) */}
-      <section>
-        <div className="container py-5">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h2 className="h4 fw-bold mb-0">Istaknute nekretnine</h2>
-            <Link to="/nekretnine" className="btn btn-outline-primary btn-sm">Prikaži sve</Link>
-          </div>
+      {}
+      <section className="section">
+        <div className="container">
+          <h2 className="h4 fw-bold section-title">Naše nekretnine</h2>
           <div className="row g-4">
-            {properties.map((p) => (
-              <div className="col-12 col-sm-6 col-lg-4" key={p.id}>
-                <PropertyCard data={p} />
+            {featured.map((p) => (
+              <div key={p.id} className="col-12 col-md-6 col-lg-4">
+                <div className="card card-featured h-100">
+                  <div className="ratio ratio-4x3 bg-light">
+                    <div className="d-flex align-items-center justify-content-center text-muted">
+                      {p.imageAlt}
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <h5 className="card-title mb-1">{p.title}</h5>
+                    <p className="card-text text-muted small mb-2">
+                      {p.city} · {p.area} m² {p.floor ? `· ${p.floor}. sprat` : ""}
+                    </p>
+                    <p className="fw-semibold mb-3">€ {p.price.toLocaleString()}</p>
+                    <div className="d-flex gap-2">
+                      <Link to={`/nekretnine/${p.id}`} className="btn btn-primary btn-sm">
+                        Pogledajte ponudu
+                      </Link>
+                      <button className="btn btn-outline-primary btn-sm" onClick={() => alert("Sačuvano (demo)")}>
+                        Sačuvaj
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* O NAMA – slika levo, tekst desno + dugme */}
+      <section className="section">
+        <div className="container">
+          <div className="row g-4 align-items-center">
+            <div className="col-lg-6">
+              {/* zameni /about.jpg svojom slikom u public/ ili koristi src/assets i relativnu putanju */}
+              <img src="slike/onama.jpg" alt="Predaja ključeva" className="about-img" />
+            </div>
+            <div className="col-lg-6">
+              <h3 className="h4 fw-bold mb-3">O nama</h3>
+              <p className="text-muted">
+                KrovNadGlavom je web platforma namenjena svima koji traže stan, kuću, poslovni prostor ili vikendicu. Gradimo iskustvo koje je čisto, pregledno i pouzdano, sa fokusom na tačnost podataka i lakoću korišćenja.
+
+              </p>
+              <p className="text-muted">
+                Omogućavamo pretragu uz filtere, detaljne stranice sa fotografijama, opisima, cenama i dostupnošću, čuvanje omiljenih i slanje upita direktno vlasnicima — sve na jednom mestu.
+              </p>
+              <Link to="/o-nama" className="btn btn-outline-primary">
+                Pročitajte više o nama
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KONTAKTIRAJTE NAS – tamno-plavi panel u dnu */}
+      <section className="section">
+        <div className="container">
+          <h3 className="h4 fw-bold text-center mb-4">Kontaktirajte nas</h3>
+
+          <div className="contact-panel p-4 p-md-5">
+            <form className="row g-3 justify-content-center" onSubmit={onContactSubmit}>
+              <div className="col-12 col-md-6">
+                <label className="form-label">Ime i prezime</label>
+                <input name="name" className="form-control" placeholder="Vaše ime i prezime" required />
+              </div>
+              <div className="col-12 col-md-6">
+                <label className="form-label">Email</label>
+                <input name="email" type="email" className="form-control" placeholder="email@domen.com" required />
+              </div>
+              <div className="col-12">
+                <label className="form-label">Poruka</label>
+                <textarea name="message" className="form-control" rows={4} placeholder="Napišite poruku..." required />
+              </div>
+              <div className="col-12 text-center">
+                <button className="btn btn-send px-4" type="submit">Pošalji</button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

@@ -55,4 +55,132 @@ code {
   border-color: #f08f0c;
   color: #111;
 }
+/* Sekcija naslova */
+.section-title {
+  margin-bottom: 1.25rem;
+}
+
+/* Kartice u “plavoj” varijanti (opciono) */
+.card-featured {
+  border: 0;
+  box-shadow: 0 .5rem 1.25rem rgba(0,0,0,.08);
+}
+
+/* O nama */
+.about-img {
+  border-radius: .75rem;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Kontakt */
+.contact-panel {
+  background: #173a8a;           /* tamno plava */
+  color: #fff;
+  border-radius: .75rem;
+  box-shadow: 0 .5rem 1.5rem rgba(23,58,138,.25);
+}
+.contact-panel .form-control {
+  background: #fff;
+  border: none;
+}
+.contact-panel .btn-send {
+  background: #ff9f1c;
+  border-color: #ff9f1c;
+  color: #1b1b1b;
+  font-weight: 600;
+  border-radius: .6rem;
+}
+.contact-panel .btn-send:hover {
+  background: #f08f0c;
+  border-color: #f08f0c;
+}
+/* ===== Global spacing ===== */
+:root{
+  --space-x-sm: 1rem;    /* ~16px */
+  --space-x-md: 1.5rem;  /* ~24px */
+  --space-x-lg: 2.5rem;  /* ~40px */
+
+  --space-y-sm: 2rem;    /* ~32px */
+  --space-y-md: 3rem;    /* ~48px */
+  --space-y-lg: 4.5rem;  /* ~72px */
+}
+
+/* Širi horizontalni padding za sve containere */
+.container, .container-fluid {
+  padding-left: var(--space-x-sm);
+  padding-right: var(--space-x-sm);
+}
+@media (min-width: 768px) {
+  .container, .container-fluid {
+    padding-left: var(--space-x-md);
+    padding-right: var(--space-x-md);
+  }
+}
+@media (min-width: 1200px) {
+  .container, .container-fluid {
+    padding-left: var(--space-x-lg);
+    padding-right: var(--space-x-lg);
+  }
+}
+
+/* Standardizovan vertikalni razmak sekcija */
+.section { padding-top: var(--space-y-md); padding-bottom: var(--space-y-md); }
+@media (min-width: 992px) {
+  .section { padding-top: var(--space-y-lg); padding-bottom: var(--space-y-lg); }
+}
+
+/* Naslovi sekcija */
+.section-title { margin-bottom: 1.25rem; }
+
+/* HERO – više “vazduha” oko teksta */
+.hero-landing .hero-inner { padding: var(--space-y-sm) var(--space-x-sm); }
+
+/* Kartice malo prozračnije */
+.card-featured .card-body { padding: 1.25rem 1.25rem; }
+
+/* O nama: slika okrugli uglovi */
+.about-img { border-radius: .75rem; width: 100%; height: auto; object-fit: cover; }
+
+/* Kontakt panel – već ima p-4/p-md-5 u JSX-u, ovde samo stil dugmeta */
+.contact-panel { border-radius: .75rem; }
+.contact-panel .btn-send {
+  background:#ff9f1c; border-color:#ff9f1c; color:#1b1b1b; font-weight:600; border-radius:.6rem;
+}
+.contact-panel .btn-send:hover { background:#f08f0c; border-color:#f08f0c; }
+
+/* ===== About page styling ===== */
+.k-card {
+  background: #ffff;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .75rem;
+}
+
+.k-card-header {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .75rem;
+  background: #ffff;
+}
+
+.about-title {
+  font-weight: 700;
+}
+
+.about-lead {
+  color: #5f6c7b;
+  font-size: .98rem;
+}
+
+.stat-number {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+.stat-label {
+  color: #5f6c7b;
+  font-size: .9rem;
+}
+
+
+
 
