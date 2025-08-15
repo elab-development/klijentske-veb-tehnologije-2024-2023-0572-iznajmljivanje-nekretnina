@@ -254,6 +254,45 @@ code {
   border-color:#1b3480;
   color:#fff;                 /* ← ostaje beo i na hover/focus */
 }
+/* ===== Register page ===== */
+.register-page .reg-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .75rem;
+}
+
+.register-page .reg-hero {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("slike/registracija.jpg");  /* stavi svoju sliku u public/ ili promeni putanju */
+  background-size: cover;
+  background-position: center;
+  border-radius: .75rem;
+  overflow: hidden;
+}
+.register-page .reg-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.12);  /* blagi overlay da tekst bude čitljiv */
+}
+
+.register-page .reg-hero-caption {
+  position: absolute;
+  left: 1rem; right: 1rem; bottom: 1rem;
+  max-width: 520px;
+  background: rgba(255,255,255,.8);
+  border-radius: .75rem;
+  padding: 1rem 1.25rem;
+}
+
+.register-page .brand-big { color:#0b3a82; font-weight:700; letter-spacing:.06em; }
+.register-page .top-link { color:#1b1b1b; font-weight:600; text-decoration:none; }
+.register-page .top-link:hover { text-decoration: underline; }
+
+/* koristimo postojeće .auth-input i .auth-btn iz login stilova;
+   osiguraj da je tekst na dugmetu beo */
+.auth-btn { color:#fff; }
+.auth-btn:hover, .auth-btn:focus { color:#fff; }
 
 
 
