@@ -181,6 +181,50 @@ code {
   font-size: .9rem;
 }
 
+/* ===== Kontakt stranica ===== */
+.k-card {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .75rem;
+}
+.k-card-header {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: .75rem;
+}
+
+.contact-form .form-control::placeholder { color: #a6adb6; opacity: 1; }
+.contact-note { color: #9aa3ad; font-size: .9rem; }
+
+/* plavo dugme kao na maketi */
+.btn-kprimary {
+  background: #2850a6;
+  border-color: #2850a6;
+  color: #fff;
+  font-weight: 600;
+  border-radius: .5rem;
+}
+.btn-kprimary:hover,
+.btn-kprimary:focus {
+  background: #214494;
+  border-color: #214494;
+  color: #fff;
+}
+
+/* mapa – sivi placeholder */
+.map-placeholder {
+  background: #dcdcdc;
+  color: #333;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 210px;
+}
+@media (min-width: 992px) {
+  .map-placeholder { height: 230px; }
+}
+
 
 
 

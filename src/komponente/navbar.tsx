@@ -24,12 +24,12 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="mainNavbar">
           {/* meni centriran */}
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li className="nav-item"><NavLink end className="nav-link" to="/pocetna">Početna</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to="/nasenekretnine">Naše nekretnine</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to="/onama">O nama</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to="/kontaktirajtenas">Kontakt</NavLink></li>
-          </ul>
+        <ul className="navbar-nav gap-lg-4 mx-auto">
+          <li className="nav-item"><NavLink end className="nav-link" to="/">Početna</NavLink></li>
+          <li className="nav-item"><NavLink className="nav-link" to="/nekretnine">Naše nekretnine</NavLink></li>
+          <li className="nav-item"><NavLink className="nav-link" to="/o-nama">O nama</NavLink></li>
+          <li className="nav-item"><NavLink className="nav-link" to="/kontakt">Kontakt</NavLink></li>
+        </ul>
 
           {/* ikonica profila desno (inline SVG, bez dodatnih libova) */}
           <div className="d-flex">
