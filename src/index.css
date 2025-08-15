@@ -183,12 +183,12 @@ code {
 
 /* ===== Kontakt stranica ===== */
 .k-card {
-  background: var(--cream);
+  background: #ffff;
   border: 1px solid rgba(0,0,0,.12);
   border-radius: .75rem;
 }
 .k-card-header {
-  background: var(--cream);
+  background: #ffff;
   border: 1px solid rgba(0,0,0,.12);
   border-radius: .75rem;
 }
@@ -224,6 +224,37 @@ code {
 @media (min-width: 992px) {
   .map-placeholder { height: 230px; }
 }
+/* ===== Auth (Login) ===== */
+.auth-page .auth-wrap { max-width: 560px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+@media (min-width: 768px){ .auth-page .auth-wrap { padding-top: 3rem; } }
+
+.auth-top-link { color:#1b1b1b; font-weight:600; text-decoration:none; }
+.auth-top-link:hover { text-decoration: underline; }
+
+.brand-text-big { color:#0b3a82; font-weight:700; letter-spacing:.06em; font-size:1rem; }
+
+.auth-input {
+  height: 56px;
+  border-radius: .75rem;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.3);
+}
+
+.auth-btn {
+  height: 52px;
+  border-radius: .6rem;
+  font-weight: 600;
+  background:#1f3b8d;
+  border-color:#1f3b8d;
+  color:#fff;                 /* ← bel tekst */
+}
+.auth-btn:hover,
+.auth-btn:focus {
+  background:#1b3480;
+  border-color:#1b3480;
+  color:#fff;                 /* ← ostaje beo i na hover/focus */
+}
+
 
 
 
