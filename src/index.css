@@ -303,6 +303,49 @@ code {
 .fav-thumb{width:48px;height:36px;border-radius:.35rem;object-fit:cover;background:#e9ecef;}
 .btn-link-sm{font-size:.85rem;padding:.25rem .5rem;}
 
+/* ===== Property details ===== */
+.detail-gallery-main { border-radius: .6rem; overflow: hidden; }
+.detail-thumbs { gap: .5rem; overflow-x: auto; padding-bottom: .25rem; }
+.detail-thumb {
+  width: 120px; height: 72px; object-fit: cover;
+  border-radius: .35rem; border:1px solid rgba(0,0,0,.2);
+  cursor: pointer; opacity: .88; background:#f1f3f5;
+}
+.detail-thumb.active, .detail-thumb:hover { border-color:#1f3b8d; opacity:1; }
+
+.badge-soft {
+  background:#f7f8ff;
+  border:1px solid rgba(0,0,0,.12);
+  color:#4b5563;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.chip {
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 9999px;
+  padding: .25rem .65rem;
+  font-size: .85rem;
+  background: #fff;
+}
+
+.map-box {
+  background:#e9ecef;
+  border-radius:.6rem;
+  height: 230px;
+  display:flex; align-items:center; justify-content:center;
+  color:#6c757d;
+}
+
+.aside-card {
+  background:#fff;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:.75rem;
+}
+
+.price-lg { font-weight: 800; font-size: 1.1rem; }
+
+
 
 
 

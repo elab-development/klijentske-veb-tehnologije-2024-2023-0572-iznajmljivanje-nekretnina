@@ -8,6 +8,7 @@ import ContactPage from "./stranice/kontaktirajtenas";
 import LoginPage from "./stranice/prijava";
 import RegisterPage from "./stranice/registracija";
 import ProfilePage from "./stranice/profilkorisnika";
+import ProtectedRoute from "./rute/ZasticenaRuta";
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/registracija" element={<RegisterPage />} />
           <Route path="/profil" element={<ProfilePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/profil" element={ <ProtectedRoute> <ProfilePage /> </ProtectedRoute> } />
         </Routes>
       </main>
 
