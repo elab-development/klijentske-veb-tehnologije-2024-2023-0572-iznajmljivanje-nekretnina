@@ -1,5 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 
+
 export default function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
@@ -7,7 +8,7 @@ export default function NavBar() {
 
         {}
         <Link className="navbar-brand d-flex align-items-center gap-2" to="/">
-          <img src="slike/logo.jpg" alt="KrovNadGlavom" height={28} />
+          <img src="/logo.jpg" alt="KrovNadGlavom" height={84} />
         </Link>
 
         <button
