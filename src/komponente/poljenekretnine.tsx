@@ -8,7 +8,6 @@ export default function PropertyCard({ data }: Props) {
     <div className="card h-100 shadow-sm">
       <div className="ratio ratio-4x3 bg-light">
         <div className="d-flex align-items-center justify-content-center text-muted">
-          {data.imageAlt ?? "Slika nekretnine"}
         </div>
       </div>
       <div className="card-body">

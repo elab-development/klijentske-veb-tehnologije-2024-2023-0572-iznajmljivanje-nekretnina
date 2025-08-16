@@ -1,49 +1,44 @@
 import { useEffect, useState } from "react";
-import { PropertyService } from "../servisi/NekretnineServis";
 import { IProperty } from "../modeli/INekretnina";
-import PropertyCard from "../komponente/poljenekretnine";
+import { PropertyService } from "../servisi/NekretnineServis";
+import { Link } from "react-router-dom";
 
 export default function ListingsPage() {
   const [items, setItems] = useState<IProperty[]>([]);
-  const [page, setPage] = useState(1);
-  const pageSize = 6;
 
   useEffect(() => {
-    setItems(PropertyService.demo());
+    PropertyService.list().then(setItems);
   }, []);
 
-  const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
-  const start = (page - 1) * pageSize;
-  const current = items.slice(start, start + pageSize);
-
   return (
-    <div className="container py-5">
-      <h1 className="h3 mb-4">Spisak nekretnina</h1>
-
-      <div className="row g-4">
-        {current.map(p => (
-          <div key={p.id} className="col-12 col-sm-6 col-lg-4">
-            <PropertyCard data={p} />
-          </div>
-        ))}
-      </div>
-
-      {/* prosta paginacija (za sad) */}
-      <nav className="mt-4">
-        <ul className="pagination">
-          <li className={`page-item ${page === 1 ? "disabled" : ""}`}>
-            <button className="page-link" onClick={() => setPage(p => Math.max(1, p - 1))}>Prethodna</button>
-          </li>
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <li key={i} className={`page-item ${page === i + 1 ? "active" : ""}`}>
-              <button className="page-link" onClick={() => setPage(i + 1)}>{i + 1}</button>
-            </li>
+    <div className="bg-cream">
+      <section className="container section">
+        <h1 className="h4 fw-bold mb-3">Naše nekretnine</h1>
+        <div className="row g-3 g-md-4">
+          {items.map(p => (
+            <div className="col-sm-6 col-lg-4" key={p.id}>
+              <div className="card h-100 shadow-sm">
+                <img
+                  src={p.images[0]}
+                  className="card-img-top"
+                  alt={p.title}
+                  style={{ aspectRatio: "4/3", objectFit: "cover" }}
+                />
+                <div className="card-body">
+                  <div className="small text-muted mb-1">{p.city}</div>
+                  <h6 className="card-title mb-2">{p.title}</h6>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="fw-bold">€{p.price} / mes</span>
+                    <Link to={`/nekretnine/${p.id}`} className="btn btn-outline-primary btn-sm">
+                      Pogledaj
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
-          <li className={`page-item ${page === totalPages ? "disabled" : ""}`}>
-            <button className="page-link" onClick={() => setPage(p => Math.min(totalPages, p + 1))}>Sledeća</button>
-          </li>
-        </ul>
-      </nav>
+        </div>
+      </section>
     </div>
   );
 }
