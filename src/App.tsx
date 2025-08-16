@@ -7,6 +7,8 @@ import AboutPage from "./stranice/onama";
 import ContactPage from "./stranice/kontaktirajtenas";
 import LoginPage from "./stranice/prijava";
 import RegisterPage from "./stranice/registracija";
+import ProfilePage from "./stranice/profilkorisnika";
+
 
 export default function App() {
   return (
@@ -21,6 +23,7 @@ export default function App() {
           <Route path="/kontakt" element={<ContactPage />} />
           <Route path="/prijava" element={<LoginPage />} />
           <Route path="/registracija" element={<RegisterPage />} />
+          <Route path="/profil" element={<ProfilePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

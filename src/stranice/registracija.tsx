@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { StorageService } from "../servisi/SkladisteServis";
+
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -14,6 +16,10 @@ export default function RegisterPage() {
     const email = String(fd.get("email") || "");
     const pass = String(fd.get("password") || "");
     const confirm = String(fd.get("confirm") || "");
+
+    StorageService.setLocal("auth.user", { fullName: name, email });
+    navigate("/profil");
+
 
     if (!agree) {
       alert("Morate prihvatiti Uslove korišćenja i Politiku privatnosti.");
