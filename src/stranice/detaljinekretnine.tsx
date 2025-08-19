@@ -1,17 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-// ako već imaš PropertyService/IProperty – možeš da ih koristiš;
-// ovo je lokalni tip da se ne sudaramo sa tvojim modelima
+import GoogleMap from "../komponente/googlemaps";
+import type { IProperty } from "../modeli/INekretnina";
+
 type Property = {
   id: string;
   title: string;
   city: string;
-  area: number;       // m²
-  rooms?: string;     // npr. "2.5"
-  floor?: string;     // npr. "3/5"
-  heating?: string;   // npr. "CG"
-  parking?: string;   // npr. "Zona"
-  price: number;      // mesečna ili ukupna
+  address?: string;   // Dodato!
+  area: number;
+  rooms?: string;
+  floor?: string;
+  heating?: string;
+  parking?: string;
+  price: number;
   images?: string[];
   description?: string;
 };
@@ -21,12 +23,12 @@ const FAV_KEY = "user.favorites";
 export default function PropertyDetailsPage() {
   const { id } = useParams<{ id: string }>();
 
-  // DEMO podaci – ako imaš servis, zameni fetch logiku
   const property: Property = useMemo(() => {
     const demo: Property = {
       id: id ?? "1",
       title: "Dvosoban stan, 58m² — Zemun",
       city: "Zemun",
+      address: "Glavna 12", // Dodato!
       area: 58,
       rooms: "2.5",
       floor: "3/5",
@@ -39,15 +41,11 @@ export default function PropertyDetailsPage() {
       description:
         "Svetao i funkcionalan dvosoban stan u srcu Zemuna. Prostran dnevni boravak sa kuhinjom i trpezarijom, spavaća soba sa plakarom, moderno kupatilo i mali balkon. Zgrada je održavana, ima lift, dvorišnu orijentaciju, kablovsku i brzi internet. U blizini je park i prodavnice kao i više linija javnog saobraćaja.",
     };
-
-    // ako nemaš slike u /public, fallback na „ratio box“
     return demo;
   }, [id]);
 
-  // galerija
   const [current, setCurrent] = useState(0);
 
-  // omiljene (localStorage)
   const [isFav, setIsFav] = useState(false);
   useEffect(() => {
     try {
@@ -134,10 +132,16 @@ export default function PropertyDetailsPage() {
             </div>
 
             {/* Lokacija */}
-            <div className="aside-card p-3">
+            <div className="bg-white border rounded-3 p-3 mt-3">
               <h6 className="fw-bold mb-2">Lokacija</h6>
-              <div className="map-box">Mapa</div>
-              <div className="small text-muted mt-2">{property.city}</div>
+              <GoogleMap
+                query={`${property.address ? property.address + ", " : ""}${property.city}`}
+                zoom={14}
+                height={260}
+              />
+              <div className="small text-muted mt-2">
+                {property.address ? `${property.address}, ` : ""}{property.city}
+              </div>
             </div>
           </div>
 

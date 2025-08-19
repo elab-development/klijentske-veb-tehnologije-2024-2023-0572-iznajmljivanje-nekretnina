@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import type { IProperty } from "../modeli/INekretnina";
 import { PropertyService } from "../servisi/NekretnineServis";
 import FilterBar, { ListingsFilters } from "../komponente/filterbar";
+import { useFavorites } from "../hook/koristiomiljene";
+
 
 const PER_PAGE = 6;
 

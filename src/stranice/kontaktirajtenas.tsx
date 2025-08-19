@@ -1,4 +1,7 @@
 import { FormEvent } from "react";
+import GoogleMap from "../komponente/googlemaps";
+
+
 
 export default function ContactPage() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -99,8 +102,9 @@ export default function ContactPage() {
                   <strong>Adresa:</strong> &nbsp; Bulevar kralja Aleksandra 73, Beograd
                 </div>
 
-                <div className="small fw-bold mb-2">Lokacija</div>
-                <div className="map-placeholder">Mapa</div>
+                <h6 className="fw-bold mb-2">Lokacija</h6>
+                <GoogleMap query="Bulevar kralja Aleksandra 73, Beograd" height={260} />
+
               </div>
             </div>
           </div>
